@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/XComCore/XComCore.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/XComCore.Tests/XComCore.Tests.csproj" />
+  </Folder>
+</Solution>
