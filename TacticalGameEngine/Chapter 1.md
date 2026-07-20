@@ -1,3 +1,5 @@
+# Introduction
+
 I'm excited to start this book. This is going to be a long journey, and I hope it's just as exciting for you, the reader, as it is for me. This book is about designing and implementing a Tactical Game System. I don't have a proper name for it yet, so that's what we'll call it for now. I also hope this project becomes something people can use to learn a programming language while getting exposure to more advanced concepts as we move further into the book.
 
 We'll take everything step by step, starting with the basic concepts and defining each element of the system before actually implementing it.
