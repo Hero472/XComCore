@@ -185,9 +185,20 @@
   },
   "active": "b4ccab62b09b2f53",
   "lastOpenFiles": [
+    "src/XComCore/World/Grid/GridPosition.cs",
+    "src/XComCore/World/Grid",
+    "src/XComCore/World",
+    "src/XComCore/Grid",
+    "src/XComCore/Gjr+",
+    "tests/XComCore.Tests/bin/Debug/net10.0/CoverletSourceRootsMapping_XComCore.Tests",
+    "tests/XComCore.Tests/obj/Debug/net10.0/XComCore.Tests.csproj.AssemblyReference.cache",
+    "tests/XComCore.Tests/obj/Debug/net10.0/XComCore.Tests.assets.cache",
+    "src/XComCore/obj/Debug/netstandard2.1/XComCore.AssemblyInfo.cs",
+    "src/XComCore/obj/Debug/netstandard2.1/XComCore.AssemblyInfoInputs.cache",
+    "src/XComCore/bin/Debug/netstandard2.1",
     "TacticalGameEngine/Chapter 1.md",
-    "TacticalGameEngine/Chapter 4.md",
     "TacticalGameEngine/Chapter 3.md",
-    "TacticalGameEngine/Chapter 2.md"
+    "TacticalGameEngine/Chapter 2.md",
+    "TacticalGameEngine/Chapter 4.md"
   ]
 }
