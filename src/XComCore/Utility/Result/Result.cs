@@ -51,11 +51,13 @@ namespace XComCore
 
     public static class Result
     {
-        public static Result<T, E> Success<T, E>(T value) where T : notnull where E : notnull
-            => Result<T, E>.Success(value);
+        public static SuccessMarker<T> Ok<T>(T value)
+            where T : notnull
+            => new SuccessMarker<T>(value);
 
-        public static Result<T, E> Failure<T, E>(E error) where T : notnull where E : notnull
-            => Result<T, E>.Failure(error);
+        public static FailureMarker<E> Err<E>(E error)
+            where E : notnull
+            => new FailureMarker<E>(error);
     }
 
     public readonly struct Result<T, E> : IEquatable<Result<T, E>> 
@@ -133,11 +135,11 @@ namespace XComCore
 
         public Result<TNew, E> MatchResult<TNew>(
             Func<T, Result<TNew, E>> success,
-            Func<E, FailureMarker<E>> failure
+            Func<E, Result<TNew, E>> failure
         ) where TNew : notnull
         {
-            return IsSuccess 
-                ? success(_value!) 
+            return IsSuccess
+                ? success(_value!)
                 : failure(_error!);
         }
 
