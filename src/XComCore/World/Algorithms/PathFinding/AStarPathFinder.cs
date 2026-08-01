@@ -12,7 +12,8 @@ namespace XComCore.World.Algorithms.PathFinding
             IGrid grid,
             Position start,
             Position goal,
-            int movementPoints)
+            int movementPoints
+        )
         {
             var frontier = new PriorityQueue<Position>();
 

@@ -1,6 +1,6 @@
-using System;
 using System.Collections.Generic;
 using XComCore.World.Geometry;
+using XComCore.World.Grid.Entities;
 
 namespace XComCore.World.Grid
 {
@@ -82,6 +82,11 @@ namespace XComCore.World.Grid
             return _tiles[Index(position)].MovementCost;
         }
 
+        public void SetMovementCost(Position position, int cost)
+        {
+            _tiles[Index(position)].SetMovementCost(cost);
+        }
+
         private int Index(Position position)
             => checked((int)(position.Y * Bounds.Width + position.X));
 
@@ -96,6 +101,46 @@ namespace XComCore.World.Grid
         public bool CanMoveTo(Position position)
         {
             return Contains(position) && IsWalkable(position);
+        }
+
+        public Result<Unit, GridError> PlaceEntity(IGridEntity entity)
+        {
+            // Validate first
+            foreach (var position in entity.OccupiedTiles)
+            {
+                if (!Contains(position))
+                    return Result.Err(GridError.OutsideGrid);
+
+                var tile = GetTile(position).Unwrap();
+
+                if (tile.HasEntity)
+                    return Result.Err(GridError.Occupied);
+            }
+
+            // Place
+            foreach (var position in entity.OccupiedTiles)
+            {
+                GetTile(position)
+                    .Unwrap()
+                    .PlaceEntity(entity);
+            }
+
+            return Result.Ok(Unit.Value);
+        }
+
+        public Result<Unit, GridError> RemoveEntity(IGridEntity entity)
+        {
+            foreach (var position in entity.OccupiedTiles)
+            {
+                if (!Contains(position))
+                    continue;
+
+                GetTile(position)
+                    .Unwrap()
+                    .RemoveEntity();
+            }
+
+            return Result.Ok(Unit.Value);
         }
     }
 }

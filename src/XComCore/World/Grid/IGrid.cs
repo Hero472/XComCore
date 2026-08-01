@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using XComCore.World.Geometry;
+using XComCore.World.Grid.Entities;
 
 namespace XComCore.World.Grid
 {
@@ -12,7 +13,10 @@ namespace XComCore.World.Grid
         Result<Unit, GridError> SetWalkable(Position position, bool walkable);
         IEnumerable<Position> GetNeighbors(Position position);
         int GetMovementCost(Position position);
+        void SetMovementCost(Position position, int cost);
         Result<GridTile, GridError> GetTile(Position position);
         bool CanMoveTo(Position position);
+        public Result<Unit, GridError> PlaceEntity(IGridEntity entity);
+        public Result<Unit, GridError> RemoveEntity(IGridEntity entity);
     }
 }

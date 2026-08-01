@@ -10,7 +10,8 @@ namespace XComCore.World.Algorithms.Traversal
         public static ReachableTiles Search(
             IGrid grid,
             Position start,
-            int movementPoints)
+            int movementPoints
+        )
         {
             var frontier = new PriorityQueue<Position>();
             var costs = new Dictionary<Position, int>();
