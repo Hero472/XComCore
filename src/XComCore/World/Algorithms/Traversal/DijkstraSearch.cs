@@ -16,6 +16,9 @@ namespace XComCore.World.Algorithms.Traversal
             var frontier = new PriorityQueue<Position>();
             var costs = new Dictionary<Position, int>();
 
+            if (!grid.IsWalkable(start))
+                return new ReachableTiles(costs);
+
             frontier.Enqueue(start, 0);
             costs[start] = 0;
 

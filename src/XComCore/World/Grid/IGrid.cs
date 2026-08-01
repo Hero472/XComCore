@@ -1,6 +1,6 @@
 using System.Collections.Generic;
+using XComCore.World.Entities;
 using XComCore.World.Geometry;
-using XComCore.World.Grid.Entities;
 
 namespace XComCore.World.Grid
 {

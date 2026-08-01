@@ -15,6 +15,35 @@ namespace XComCore.World.Algorithms.PathFinding
             int movementPoints
         )
         {
+            if (!grid.Contains(start) ||
+                !grid.Contains(goal))
+            {
+                return new PathResult(
+                    false,
+                    Array.Empty<Position>(),
+                    0
+                );
+            }
+
+            if (!grid.IsWalkable(start) ||
+                !grid.IsWalkable(goal))
+            {
+                return new PathResult(
+                    false,
+                    Array.Empty<Position>(),
+                    0
+                );
+            }
+
+            if (start == goal)
+            {
+                return new PathResult(
+                    true,
+                    new [] { start },
+                    0
+                );
+            }
+
             var frontier = new PriorityQueue<Position>();
 
             var costs = new Dictionary<Position, int>();
@@ -29,8 +58,14 @@ namespace XComCore.World.Algorithms.PathFinding
 
                 var current = node.Item;
 
-                if (node.Priority != costs[current] + Heuristic(current, goal))
+                if (!costs.TryGetValue(current, out var currentCost))
                     continue;
+
+                if (node.Priority > currentCost + Heuristic(current, goal))
+                    continue;
+
+                if (current == goal)
+                    break;
 
                 foreach (var neighbor in grid.GetNeighbors(current))
                 {
@@ -76,7 +111,8 @@ namespace XComCore.World.Algorithms.PathFinding
         private static List<Position> ReconstructPath(
             Dictionary<Position, Position> cameFrom,
             Position start,
-            Position goal)
+            Position goal
+        )
         {
             var path = new List<Position>();
 
@@ -95,10 +131,17 @@ namespace XComCore.World.Algorithms.PathFinding
             return path;
         }
 
-        private static int Heuristic(Position a, Position b)
+        private static int Heuristic(
+            Position a,
+            Position b,
+            int minimumCost = 1
+        )
         {
-            return Math.Abs((int)a.X - (int)b.X)
-                 + Math.Abs((int)a.Y - (int)b.Y);
+            return (
+                Math.Abs((int)a.X - (int)b.X)
+                +
+                Math.Abs((int)a.Y - (int)b.Y)
+            ) * minimumCost;
         }
     }
 }
