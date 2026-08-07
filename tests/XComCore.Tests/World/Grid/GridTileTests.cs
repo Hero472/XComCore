@@ -1,6 +1,6 @@
 using XComCore.World.Geometry;
 using XComCore.World.Grid;
-using XComCore.World.Entities;
+using XComCore.World.Entities.IWorldEntity;
 
 namespace XComCore.Tests.World.Grid;
 
@@ -68,6 +68,7 @@ public class GridTileTests
 
     private sealed class DummyEntity : IGridEntity
     {
+        public Guid Id { get; } = Guid.NewGuid();
         public Position Origin { get; }
 
         public IReadOnlyCollection<Offset> FootPrint { get; }

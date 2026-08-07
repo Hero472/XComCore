@@ -6,12 +6,14 @@ namespace XComCore.Tests.World.Algorithms.PathFinding;
 
 public class AStarPathFinderTests
 {
+    private readonly AStarPathfinder _pathfinder = new AStarPathfinder(); // Assuming parameterless constructor
+
     [Fact]
     public void Search_ShouldFindShortestPath()
     {
         var grid = new SquareGrid(5, 5);
 
-        var result = AStarPathfinder.Search(
+        var result = _pathfinder.Search(
             grid,
             new Position(0, 0),
             new Position(4, 4),
@@ -46,7 +48,7 @@ public class AStarPathFinderTests
             false
         );
 
-        var result = AStarPathfinder.Search(
+        var result = _pathfinder.Search(
             grid,
             new Position(0, 0),
             new Position(2, 0),
@@ -73,7 +75,7 @@ public class AStarPathFinderTests
             false
         );
 
-        var result = AStarPathfinder.Search(
+        var result = _pathfinder.Search(
             grid,
             new Position(0, 0),
             goal,
@@ -90,7 +92,7 @@ public class AStarPathFinderTests
     {
         var grid = new SquareGrid(5, 5);
 
-        var result = AStarPathfinder.Search(
+        var result = _pathfinder.Search(
             grid,
             new Position(0, 0),
             new Position(10, 10),
@@ -107,7 +109,7 @@ public class AStarPathFinderTests
     {
         var grid = new SquareGrid(10, 10);
 
-        var result = AStarPathfinder.Search(
+        var result = _pathfinder.Search(
             grid,
             new Position(0, 0),
             new Position(9, 9),
@@ -134,7 +136,7 @@ public class AStarPathFinderTests
             10
         );
 
-        var result = AStarPathfinder.Search(
+        var result = _pathfinder.Search(
             grid,
             new Position(0, 0),
             new Position(4, 0),
@@ -161,7 +163,7 @@ public class AStarPathFinderTests
 
         var position = new Position(2, 2);
 
-        var result = AStarPathfinder.Search(
+        var result = _pathfinder.Search(
             grid,
             position,
             position,

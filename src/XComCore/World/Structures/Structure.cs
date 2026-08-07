@@ -1,6 +1,6 @@
 using System;
 using XComCore.World.Geometry;
-using XComCore.World.Entities;
+using XComCore.World.Grid;
 
 namespace XComCore.World.Structures
 {

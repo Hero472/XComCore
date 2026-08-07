@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using XComCore.World.Entities;
+using XComCore.World.Entities.IWorldEntity;
 using XComCore.World.Geometry;
 
 namespace XComCore.World.Grid

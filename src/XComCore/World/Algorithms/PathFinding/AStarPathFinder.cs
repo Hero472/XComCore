@@ -6,9 +6,9 @@ using XComCore.World.Grid;
 
 namespace XComCore.World.Algorithms.PathFinding
 {
-    public sealed class AStarPathfinder
+    public sealed class AStarPathfinder : IPathFinder
     {
-        public static PathResult Search(
+        public PathResult Search(
             IGrid grid,
             Position start,
             Position goal,

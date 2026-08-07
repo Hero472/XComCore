@@ -1,4 +1,4 @@
-using XComCore.World.Entities;
+using XComCore.World.Entities.IWorldEntity;
 
 namespace XComCore.World.Grid
 {
